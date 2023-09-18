@@ -20,13 +20,11 @@ class ObxController extends GetxController{
   void incrementX() {
     _x++;
     update();
-    print(_x);
   }
 
   void decrementX() {
     _x--;
     update();
-    print(_x);
   }
 
 

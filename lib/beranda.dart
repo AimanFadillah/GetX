@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx/snackbar.dart';
 import 'package:getx/state.dart';
 
 class Beranda extends StatelessWidget {
@@ -54,28 +55,33 @@ class Beranda extends StatelessWidget {
                     ))),
                   ),
                 ),
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 10),
-                  width: 180,
-                  height: 150,
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey,
-                        spreadRadius: 2, // Radius penyebaran bayangan
-                        blurRadius: 7, // Radius blur bayangan
-                        offset: Offset(0, 3), // Posisi bayangan (x, y)
-                      ),
-                    ],
-                    color: Colors.orange,
+                GestureDetector(
+                  onTap: () {
+                    Get.to(() => const Snack());
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(vertical: 10),
+                    width: 180,
+                    height: 150,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey,
+                          spreadRadius: 2, // Radius penyebaran bayangan
+                          blurRadius: 7, // Radius blur bayangan
+                          offset: Offset(0, 3), // Posisi bayangan (x, y)
+                        ),
+                      ],
+                      color: Colors.orange,
+                    ),
+                    child: const Center(child: Text("Snackbar Dialog ButtomSheet",style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                    ),
+                      textAlign: TextAlign.center,
+                    )),
                   ),
-                  child: const Center(child: Text("Snackbar Dialog ButtomSheet",style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                  ),
-                    textAlign: TextAlign.center,
-                  )),
                 ),
               ],
             ),

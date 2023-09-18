@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:getx/beranda.dart';
 import 'package:get/get.dart';
+import 'package:getx/state.dart';
+import 'package:getx/tambahKurang.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,10 +13,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return  GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Getx',
-      home: Beranda(),
+      initialRoute: "/",
+      getPages: [
+        GetPage(name: "/", page: () => const MyApp()),
+        GetPage(name: "/state", page: () => const StateManagement()),
+        GetPage(name: "/tambah-kurang", page: () => const TambahKurang()),
+      ],
+      home: const Beranda(),
     );
   }
 }
