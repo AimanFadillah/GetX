@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx/bentar.dart';
 import 'package:getx/controller/dialog_controller.dart';
 
 class Snack extends StatelessWidget {
@@ -19,7 +18,7 @@ class Snack extends StatelessWidget {
             Get.bottomSheet(
               Container(
                 width: MediaQuery.of(context).size.width,
-                height: 100,
+                height: 150,
                 padding: const EdgeInsets.all(10),
                 color: Colors.white,
                 child:Column(
@@ -27,6 +26,8 @@ class Snack extends StatelessWidget {
                   children: [
                     TextButton(onPressed: () => Get.toNamed("/state"), child:const Text("State")),
                     TextButton(onPressed: () => Get.toNamed("/tambah-kurang"), child:const Text("Tambah Kurang")),
+                    TextButton(onPressed: () => Get.toNamed("/list"), child:const Text("list Siwa")),
+                    TextButton(onPressed: () => Get.toNamed("/keyView"), child:const Text("Key input")),
                   ],
                 ),
               )

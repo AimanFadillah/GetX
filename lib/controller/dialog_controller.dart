@@ -9,6 +9,17 @@ class DialogController extends GetxController {
   RxString textName = RxString("");
   RxBool tog = RxBool(true);
   RxInt angka = RxInt(0);
+  RxList dataSiswa = RxList([]);
+  RxMap dataKey = RxMap({});
+  //
+
+  void tambahSiswa (String nama) {
+      dataSiswa.add(nama);
+  }
+
+  void tambahMap (String key,String nama){
+      dataKey["${key}"] = nama;
+  }
 
   updateName (String name) {
     textName.value = name;
@@ -25,7 +36,6 @@ class DialogController extends GetxController {
 
   void setTog (bool toggle) {
     tog(toggle);
-    print(toggle);
   }
 
 

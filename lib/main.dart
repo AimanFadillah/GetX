@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:getx/beranda.dart';
 import 'package:get/get.dart';
+import 'package:getx/keyView.dart';
+import 'package:getx/list.dart';
 import 'package:getx/state.dart';
 import 'package:getx/tambahKurang.dart';
 
@@ -21,6 +23,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/", page: () => const MyApp()),
         GetPage(name: "/state", page: () => const StateManagement()),
         GetPage(name: "/tambah-kurang", page: () => const TambahKurang()),
+        GetPage(name: "/list", page: () => const ListSiswa()),
+        GetPage(name: "/keyView", page: () => const KeyView()),
       ],
       home: const Beranda(),
     );
