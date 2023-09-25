@@ -13,11 +13,10 @@ class DialogController extends GetxController {
 
   TextEditingController editingController = TextEditingController();
 
-  RxString textName = RxString("");
+  RxString textName = RxString("XII RPL 2");
   RxInt angka = RxInt(25);
   RxList dataSiswa = RxList(["naruto","sasuke"]);
   RxMap dataKey = RxMap({"001":"pai"});
-
   //
 
   void tambahSiswa (String nama) {
@@ -28,9 +27,8 @@ class DialogController extends GetxController {
       dataKey["${key}"] = nama;
   }
 
-  updateName (String name) {
+  void updateName (String name) {
     textName.value = name;
-    return name;
   }
 
   void addAngka () {

@@ -6,6 +6,7 @@ import 'package:getx/list.dart';
 import 'package:getx/snackbar.dart';
 import 'package:getx/state.dart';
 import 'package:getx/tambahKurang.dart';
+import 'package:getx/updateKelas.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/state", page: () => const StateManagement()),
         GetPage(name: "/tambah-kurang", page: () => const TambahKurang()),
         GetPage(name: "/list", page: () => const ListSiswa()),
+        GetPage(name: "/update", page: () => const UpdateKelas() ),
         GetPage(name: "/keyView", page: () => const KeyView()),
       ],
       home: const Beranda(),

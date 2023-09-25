@@ -25,7 +25,7 @@ class Snack extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TextButton(onPressed: () => Get.toNamed("/state"), child:const Text("State")),
-                    TextButton(onPressed: () => Get.toNamed("/tambah-kurang"), child:const Text("Tambah Kurang")),
+                    TextButton(onPressed: () => Get.toNamed("/update"), child:const Text("Edit Kelas")),
                     TextButton(onPressed: () => Get.toNamed("/list"), child:const Text("Tambahkan Siwa")),
                     TextButton(onPressed: () => Get.toNamed("/keyView"), child:const Text("Tambahkan Matapelajaran")),
                   ],
@@ -44,7 +44,7 @@ class Snack extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 padding: const EdgeInsets.all(5),
                 color: Colors.purple,
-                child:const Text("XII RPL 2",textAlign: TextAlign.center,style: TextStyle(color: Colors.white,fontSize: 20)),
+                child:Text(dialogController.textName.value,textAlign: TextAlign.center,style:const TextStyle(color: Colors.white,fontSize: 20)),
               ),
               Container(
                 width: MediaQuery.of(context).size.width,
