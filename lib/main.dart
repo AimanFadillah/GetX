@@ -3,6 +3,7 @@ import 'package:getx/beranda.dart';
 import 'package:get/get.dart';
 import 'package:getx/keyView.dart';
 import 'package:getx/list.dart';
+import 'package:getx/snackbar.dart';
 import 'package:getx/state.dart';
 import 'package:getx/tambahKurang.dart';
 
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       initialRoute: "/",
       getPages: [
         GetPage(name: "/", page: () => const MyApp()),
+        GetPage(name: "/snack", page: () => const Snack()),
         GetPage(name: "/state", page: () => const StateManagement()),
         GetPage(name: "/tambah-kurang", page: () => const TambahKurang()),
         GetPage(name: "/list", page: () => const ListSiswa()),

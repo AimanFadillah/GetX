@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx/controller/dialog_controller.dart';
@@ -13,6 +12,7 @@ class Snack extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.orange,
         iconTheme: const IconThemeData(color: Colors.white),
+        title: const Text("Sekolah",style: TextStyle(color: Colors.white),),
         actions: [
           IconButton(onPressed: () {
             Get.bottomSheet(
@@ -26,8 +26,8 @@ class Snack extends StatelessWidget {
                   children: [
                     TextButton(onPressed: () => Get.toNamed("/state"), child:const Text("State")),
                     TextButton(onPressed: () => Get.toNamed("/tambah-kurang"), child:const Text("Tambah Kurang")),
-                    TextButton(onPressed: () => Get.toNamed("/list"), child:const Text("list Siwa")),
-                    TextButton(onPressed: () => Get.toNamed("/keyView"), child:const Text("Key input")),
+                    TextButton(onPressed: () => Get.toNamed("/list"), child:const Text("Tambahkan Siwa")),
+                    TextButton(onPressed: () => Get.toNamed("/keyView"), child:const Text("Tambahkan Matapelajaran")),
                   ],
                 ),
               )
@@ -35,40 +35,98 @@ class Snack extends StatelessWidget {
           },icon:const Icon(Icons.ac_unit_outlined))
         ],
       ),
-      body: Column(
-        children: [
-          Container(
-            margin:const EdgeInsets.all(10),
-            child: TextField(
-              controller: dialogController.editingController,
-              decoration:const InputDecoration(
-                  label:Text("Masukkan nama"),
+      body: Container(
+        margin: const EdgeInsets.all(20),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width,
+                padding: const EdgeInsets.all(5),
+                color: Colors.purple,
+                child:const Text("XII RPL 2",textAlign: TextAlign.center,style: TextStyle(color: Colors.white,fontSize: 20)),
               ),
-              onSubmitted: (isi) {
-                Get.snackbar("Nama Berubah jadi",dialogController.updateName(isi),backgroundColor: Colors.purple,colorText: Colors.white);
-                // Get.defaultDialog(
-                //   title: "Nama",
-                //   middleText: dialogController.updateName(isi),
-                //   onConfirm: () {
-                //     // Get.to(() => const Bentar(),arguments: dialogController.editingController.text);
-                //   }
-                // );
-              },
-            ),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                padding: const EdgeInsets.all(10),
+                color: Colors.yellow,
+                child:Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Obx(() => Text("Jumlah Siswa : ${dialogController.angka}")),
+                    Row(
+                      children: [
+                        IconButton(onPressed: () {dialogController.addAngka();}, icon: const Icon(Icons.add)),
+                        IconButton(onPressed: () {dialogController.removeAngka();}, icon: const Icon(Icons.remove)),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                padding: const EdgeInsets.all(10),
+                color: Colors.yellow,
+                child:Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(dialogController.tog.value ? "Closes" : "Opened"),
+                    Obx(() => Switch(
+                        value: dialogController.tog.value,
+                        activeColor: dialogController.tog.value == true ? Colors.green : Colors.red,
+                        inactiveThumbColor: Colors.red,
+                        onChanged: (value) => dialogController.setTog(value)
+                    ))
+                  ],
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                padding: const EdgeInsets.all(10),
+                color: Colors.purple,
+                child:const Text("Nama Siswa",textAlign: TextAlign.center,style: TextStyle(color: Colors.white,fontSize: 20)),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                padding: const EdgeInsets.all(20),
+                color: Colors.yellow,
+                child:Obx(() =>
+                    ListView.builder(
+                        shrinkWrap: true,
+                        itemCount:dialogController.dataSiswa.length,
+                        itemBuilder:(context,index) => Text(dialogController.dataSiswa[index],style:const TextStyle(fontSize: 16))
+                    )
+                )
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                padding: const EdgeInsets.all(5),
+                color: Colors.purple,
+                child:const Text("Mata Pelajaran",textAlign: TextAlign.center,style: TextStyle(color: Colors.white,fontSize: 20)),
+              ),
+              Container(
+                  width: MediaQuery.of(context).size.width,
+                  padding: const EdgeInsets.all(20),
+                  color: Colors.yellow,
+                  child:Obx(() =>
+                      ListView.builder(
+                          shrinkWrap: true,
+                          itemCount:dialogController.dataKey.length,
+                          itemBuilder:(context,index) {
+                            String namaKey = dialogController.dataKey.keys.elementAt(index);
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("${namaKey}",style:const TextStyle(fontSize: 16)),
+                                Text("${dialogController.dataKey[namaKey]}",style:const TextStyle(fontSize: 16))
+                              ],
+                            );
+                          })
+                      )
+              ),
+            ],
           ),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 10),
-            child: Obx(() => Text(dialogController.textName.value,style:TextStyle(
-              color: dialogController.tog.value == true ? Colors.green : Colors.red
-            ))),
-          ),
-          Obx(() => Switch(
-              value: dialogController.tog.value,
-              activeColor: dialogController.tog.value == true ? Colors.green : Colors.red,
-              inactiveThumbColor: Colors.red,
-              onChanged: (value) => dialogController.setTog(value)
-          ))
-        ],
+        ),
       ),
     );
   }

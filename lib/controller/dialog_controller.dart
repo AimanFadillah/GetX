@@ -3,14 +3,21 @@ import 'package:get/get.dart';
 
 class DialogController extends GetxController {
 
+  static final DialogController _instance = DialogController._internal();
+
+  factory DialogController() {
+    return _instance;
+  }
+
+  DialogController._internal();
+
   TextEditingController editingController = TextEditingController();
 
-  // Rext
   RxString textName = RxString("");
-  RxBool tog = RxBool(true);
-  RxInt angka = RxInt(0);
-  RxList dataSiswa = RxList([]);
-  RxMap dataKey = RxMap({});
+  RxInt angka = RxInt(25);
+  RxList dataSiswa = RxList(["naruto","sasuke"]);
+  RxMap dataKey = RxMap({"001":"pai"});
+
   //
 
   void tambahSiswa (String nama) {
@@ -27,13 +34,21 @@ class DialogController extends GetxController {
   }
 
   void addAngka () {
+    if(tog.value) return;
+    if(angka.value == 35){
+      tog(true);
+      return;
+    }
     angka.value++;
   }
 
   void removeAngka () {
+    if(tog.value) return;
+    if(angka.value - 1 <= 0) return;
     angka.value--;
   }
 
+  RxBool tog = RxBool(false);
   void setTog (bool toggle) {
     tog(toggle);
   }

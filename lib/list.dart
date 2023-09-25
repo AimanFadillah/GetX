@@ -17,20 +17,14 @@ class ListSiswa extends StatelessWidget {
           children: [
             TextField(
               decoration:const InputDecoration(
-                label:Text("Masukkan nama"),
+                label:Text("Masukkan Siswa"),
               ),
               onSubmitted: (isi) {
                 dialogController.tambahSiswa(isi);
+                Get.toNamed("/snack");
               },
             ),
-            Obx(() =>
-              ListView.builder(
-                shrinkWrap: true,
-                itemCount:dialogController.dataSiswa.length,
-                itemBuilder:(context,index) => ListTile(title: Text(dialogController.dataSiswa[index]))
-              )
-              // Text(dialogController.dataSiswa[0])
-            ),
+
           ],
         ),
       ),

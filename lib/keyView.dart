@@ -20,13 +20,13 @@ class KeyView extends StatelessWidget {
             TextField(
               controller: key,
               decoration: const InputDecoration(
-                label:Text("Masukkan Key"),
+                label:Text("Masukkan Id"),
               ),
             ),
             TextField(
               controller: isi,
               decoration: const InputDecoration(
-                label:Text("Masukkan Isi"),
+                label:Text("Masukkan Mata pelajaran"),
               ),
             ),
             const SizedBox(
@@ -35,24 +35,11 @@ class KeyView extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 dialogController.tambahMap(key.text,isi.text);
+                Get.toNamed("/snack");
               },
-              child: Text("Submit"),
+              child:const Text("Submit"),
             ),
-            Obx(() =>
-                ListView.builder(
-                    shrinkWrap: true,
-                    itemCount:dialogController.dataKey.length,
-                    itemBuilder:(context,index){
-                      String namaKey = dialogController.dataKey.keys.elementAt(index);
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("${namaKey}"),
-                          Text("${dialogController.dataKey[namaKey]}")
-                        ],
-                      );
-                    })
-            ),
+
           ],
         ),
       ),
