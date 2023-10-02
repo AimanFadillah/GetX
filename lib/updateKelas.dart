@@ -9,6 +9,7 @@ class UpdateKelas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     DialogController dialogController = DialogController();
+    TextEditingController defaultvalue = TextEditingController(text: dialogController.textName.value);
     return Scaffold(
       appBar: AppBar(),
       body: Container(
@@ -16,6 +17,7 @@ class UpdateKelas extends StatelessWidget {
         child:Column(
           children: [
             TextField(
+              controller: defaultvalue,
               decoration:const InputDecoration(
                 label:Text("Ganti Kelas"),
               ),

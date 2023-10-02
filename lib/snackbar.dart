@@ -70,7 +70,7 @@ class Snack extends StatelessWidget {
                 child:Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(dialogController.tog.value ? "Closes" : "Opened"),
+                    Obx(() => Text(dialogController.tog.value ? "Closes" : "Opened")),
                     Obx(() => Switch(
                         value: dialogController.tog.value,
                         activeColor: dialogController.tog.value == true ? Colors.green : Colors.red,
